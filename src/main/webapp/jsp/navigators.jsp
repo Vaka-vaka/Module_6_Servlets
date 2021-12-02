@@ -7,13 +7,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/developers">Developers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users">Users</a>
+                    <a class="nav-link" aria-current="page" href="/developers">Developers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                     <a class="nav-link" href="/projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/companies">Companies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customers">Customers</a>
                 </li>
             </ul>
         </div>
