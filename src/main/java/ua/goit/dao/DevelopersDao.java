@@ -15,6 +15,18 @@ import java.util.*;
 
 public class DevelopersDao extends AbstractDao<Developers> {
 
+    private static DevelopersDao instance;
+
+    private DevelopersDao() {
+    }
+
+    public static DevelopersDao getInstance() {
+        if (instance == null) {
+            instance = new DevelopersDao();
+        }
+        return instance;
+    }
+
     private static final Logger LOGGER = LogManager.getLogger(DevelopersDao.class);
 
     @Override
@@ -31,6 +43,20 @@ public class DevelopersDao extends AbstractDao<Developers> {
         developers.setGender(resultSet.getString("gender"));
         developers.setSalary(resultSet.getInt("salary"));
         return developers;
+    }
+
+    public Developers getByName(String developersName) {
+        String sql = "select * from developers where name = ?";
+        try (ResultSet rs = DbHelper.getWithPreparedStatement(sql, ps -> {
+            ps.setString(2, developersName);
+        })) {
+            if (rs.next()) {
+                return mapToEntity(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

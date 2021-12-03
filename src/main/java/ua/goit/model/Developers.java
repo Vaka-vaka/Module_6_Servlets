@@ -18,6 +18,7 @@ public class Developers implements Identity {
     private long Age;
     private String Gender;
     private int Salary;
+    private String password;
 
     @Override
     public Long getId() {
@@ -58,6 +59,14 @@ public class Developers implements Identity {
 
     public void setSalary(int salary) {
         Salary = salary;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

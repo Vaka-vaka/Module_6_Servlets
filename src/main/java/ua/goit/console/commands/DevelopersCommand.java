@@ -21,7 +21,7 @@ public class DevelopersCommand implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger(DevelopersCommand.class);
 
-    private final DevelopersDao developersDao = new DevelopersDao();
+    private final DevelopersDao developersDao = DevelopersDao.getInstance();
 
     @Override
     public void handle(String params, Consumer<Command> setActive) {
