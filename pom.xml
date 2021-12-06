@@ -105,7 +105,7 @@
               <archive>
                 <manifest>
                   <mainClass>
-                    ua.ua.goit.Main
+                    ua.goit.Main
                   </mainClass>
                 </manifest>
               </archive>

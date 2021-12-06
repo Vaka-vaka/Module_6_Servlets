@@ -7,6 +7,7 @@
 
 package ua.goit.servlets;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,6 +23,11 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     private final DevelopersDao developersDao = DevelopersDao.getInstance();
+
+//    @Override
+//    public void init() throws ServletException {
+//        this.developersDao = (DevelopersDao) getServletContext().getAttribute("developersDao");
+//    }
 
     @Override
     protected void doPost(HttpServletRequest request
