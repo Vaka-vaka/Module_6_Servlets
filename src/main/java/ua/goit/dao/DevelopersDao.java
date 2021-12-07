@@ -15,6 +15,7 @@ import java.util.*;
 
 public class DevelopersDao extends AbstractDao<Developers> {
 
+    private static final Logger LOGGER = LogManager.getLogger(DevelopersDao.class);
     private static DevelopersDao instance;
 
     private DevelopersDao() {
@@ -26,8 +27,6 @@ public class DevelopersDao extends AbstractDao<Developers> {
         }
         return instance;
     }
-
-    private static final Logger LOGGER = LogManager.getLogger(DevelopersDao.class);
 
     @Override
     String getTableName() {
