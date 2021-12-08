@@ -17,6 +17,17 @@ import java.util.*;
 public class SkillsDao extends AbstractDao<Skills> {
 
     private static final Logger LOGGER = LogManager.getLogger(SkillsDao.class);
+    private static SkillsDao instance;
+
+    private SkillsDao() {
+    }
+
+    public static SkillsDao getInstance() {
+        if (instance == null) {
+            instance = new SkillsDao();
+        }
+        return instance;
+    }
 
     @Override
     String getTableName() {

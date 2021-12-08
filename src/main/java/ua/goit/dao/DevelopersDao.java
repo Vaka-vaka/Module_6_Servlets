@@ -44,20 +44,6 @@ public class DevelopersDao extends AbstractDao<Developers> {
         return developers;
     }
 
-    public Developers getByName(String developersName) {
-        String sql = "select * from developers where name = ?";
-        try (ResultSet rs = DbHelper.getWithPreparedStatement(sql, ps -> {
-            ps.setString(2, developersName);
-        })) {
-            if (rs.next()) {
-                return mapToEntity(rs);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     @Override
     public Optional<Developers> create(Developers entity) {
         String sql = "insert into developers(id, name_, age, gender, salary) values (?, ?, ?, ?, ?)";

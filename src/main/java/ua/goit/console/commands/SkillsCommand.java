@@ -20,7 +20,7 @@ public class SkillsCommand implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger(SkillsCommand.class);
 
-    private final SkillsDao skillsDao = new SkillsDao();
+    private final SkillsDao skillsDao = SkillsDao.getInstance();
 
     @Override
     public void handle(String params, Consumer<Command> setActive) {
