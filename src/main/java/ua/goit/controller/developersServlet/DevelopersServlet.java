@@ -1,6 +1,6 @@
 
 
-package ua.goit.controller;
+package ua.goit.controller.developersServlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ import ua.goit.service.DevelopersService;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/developers")
+@WebServlet("/developersJSP")
 public class DevelopersServlet extends HttpServlet {
 
     private DevelopersService service;
@@ -26,7 +26,8 @@ public class DevelopersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Developers> all = service.getAll();
-        req.setAttribute("developers", all);
-        req.getRequestDispatcher("/view/jsp/developers.jsp").forward(req, resp);
+        Object[] developersJSP = all.toArray();
+        req.setAttribute("developersJSP", developersJSP);
+        req.getRequestDispatcher("/view/jsp/developersJSP.jsp").forward(req, resp);
     }
 }

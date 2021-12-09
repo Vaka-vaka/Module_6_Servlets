@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ua.goit</groupId>
-  <artifactId>Module4_JDBC</artifactId>
+  <artifactId>Module_6_SERVLET</artifactId>
   <version>1.0-GOIT</version>
 
   <name>Module_6_SERVLET</name>
@@ -41,6 +41,12 @@
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
       <version>2.11.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
     </dependency>
 
     <dependency>
