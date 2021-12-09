@@ -15,6 +15,18 @@ import java.util.*;
 
 public class DevelopersDao extends AbstractDao<Developers> {
 
+    private static DevelopersDao  instance;
+
+    private DevelopersDao() {
+    }
+
+    public static DevelopersDao getInstance() {
+        if (instance == null) {
+            instance = new DevelopersDao();
+        }
+        return instance;
+    }
+
     private static final Logger LOGGER = LogManager.getLogger(DevelopersDao.class);
 
     @Override

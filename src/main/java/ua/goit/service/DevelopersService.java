@@ -14,7 +14,7 @@ public class DevelopersService {
 
     private static final Logger LOGGER = LogManager.getLogger(DevelopersService.class);
 
-    private final DevelopersDao developersDao = new DevelopersDao();
+    private final DevelopersDao developersDao = DevelopersDao.getInstance();
 
     private DevelopersService() {
     }
@@ -25,7 +25,6 @@ public class DevelopersService {
         }
         return instance;
     }
-
 
     public List<Developers> getAll() {
         return developersDao.getAll();

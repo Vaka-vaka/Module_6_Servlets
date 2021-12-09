@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import ua.goit.model.console.Command;
 import ua.goit.model.dao.DevelopersDao;
 import ua.goit.model.body.Developers;
+import ua.goit.service.DevelopersService;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -21,7 +22,7 @@ public class DevelopersCommand implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger(DevelopersCommand.class);
 
-    private final DevelopersDao developersDao = new DevelopersDao();
+    private static final DevelopersService developersService = DevelopersService.getInstance();
 
     @Override
     public void handle(String params, Consumer<Command> setActive) {
@@ -48,7 +49,7 @@ public class DevelopersCommand implements Command {
     }
 
     private void getAll() {
-        List<Developers> all = developersDao.getAll();
+        List<Developers> all = developersService.getAll();
         System.out.println("Returned " + all.size() + " developers");
         for (Developers developers : all) {
             System.out.println(developers);
@@ -57,7 +58,7 @@ public class DevelopersCommand implements Command {
 
     private void update(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Developers> optionalDevelopers = developersDao
+        Optional<Developers> optionalDevelopers = developersService
                 .get(Long.parseLong(paramsArray[0]));
         if (optionalDevelopers.isPresent()) {
             Developers developers = optionalDevelopers.get();
@@ -65,7 +66,7 @@ public class DevelopersCommand implements Command {
             developers.setAge(Long.parseLong(paramsArray[2]));
             developers.setGender(paramsArray[3]);
             developers.setSalary(Integer.parseInt(paramsArray[4]));
-            developersDao.update(developers);
+            developersService.update(developers);
         } else {
             System.out.println("User with id " + paramsArray[0] + " not found");
         }
@@ -88,12 +89,12 @@ public class DevelopersCommand implements Command {
         developers.setAge(Long.parseLong(paramsArray[2]));
         developers.setGender(paramsArray[3]);
         developers.setSalary(Integer.parseInt(paramsArray[4]));
-        developersDao.create(developers);
+        developersService.create(developers);
     }
 
     private void get(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Developers> developers = developersDao
+        Optional<Developers> developers = developersService
                 .get(Long.parseLong(paramsArray[0]));
         if (developers.isPresent()) {
             System.out.println(developers.get());
@@ -104,10 +105,10 @@ public class DevelopersCommand implements Command {
 
     private void delete(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Developers> developers = developersDao
+        Optional<Developers> developers = developersService
                 .get(Long.parseLong(paramsArray[0]));
         if (developers.isPresent()) {
-            developersDao.delete(developers.get());
+            developersService.delete(developers.get());
         } else {
             System.out.println("Developers with id " + paramsArray[0] + " not found");
         }

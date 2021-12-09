@@ -23,7 +23,6 @@ public class DevelopersServlet extends HttpServlet {
         this.service = (DevelopersService) getServletContext().getAttribute("developersService" );
     }
 
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Developers> all = service.getAll();
