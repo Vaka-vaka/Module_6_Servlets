@@ -9,6 +9,8 @@
 
 <jsp:include page = "navigators.jsp"/>
 
+<% ua.goit.model.body.Developers  developers = (ua.goit.model.body.Developers) request.getAttribute("developers"); %>
+
 <div class="container">
     <div class="row">
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -20,27 +22,27 @@
         <div class="row">
             <div class="mb-3">
                 <label for="id" class="form-label">ID</label>
-                <input type="text" class="form-control" value = "{{id}}"
+                <input type="text" disabled class="form-control" value = "<%= developers.getId() %>"
                        id="id" placeholder="id">
             </div>
             <div class="mb-3">
                 <label for="name_" class="form-label">Name_</label>
-                <input type="text" class="form-control" value = "{{name_}}"
+                <input type="text" class="form-control" value = "<%= developers.getName_() %>"
                        id="name_" placeholder="name_">
             </div>
             <div class="mb-3">
                 <label for="age" class="form-label">Age</label>
-                <input type="text" class="form-control" value = "{{age}}"
+                <input type="text" class="form-control" value = "<%= developers.getAge() %>"
                        id="age" placeholder="age">
             </div>
             <div class="mb-3">
                 <label for="gender" class="form-label">Gender</label>
-                <input type="text" class="form-control" value = "{{gender}}"
+                <input type="text" class="form-control" value = "<%= developers.getGender() %>"
                        id="gender" placeholder="gender">
             </div>
             <div class="mb-3">
                 <label for="salary" class="form-label">Salary</label>
-                <input type="text" class="form-control" value = "{{salary}}"
+                <input type="text" class="form-control" value = "<%= developers.getSalary() %>"
                        id="salary" placeholder="salary">
             </div>
     </div>
@@ -67,8 +69,8 @@
         gender: gender.value,
         salary: salary.value,
    }
-    fetch('/developersJSP-{{action}}', {
-    method: 'POST',
+    fetch('/developersJSP/ <%= developers.getId() %>' , {
+    method: 'PUT',
     body: JSON.stringify(body)
     })
     . then( _ => {

@@ -30,4 +30,5 @@ public class DevelopersServlet extends HttpServlet {
         req.setAttribute("developersJSP", developersJSP);
         req.getRequestDispatcher("/view/jsp/developersJSP.jsp").forward(req, resp);
     }
+
 }
