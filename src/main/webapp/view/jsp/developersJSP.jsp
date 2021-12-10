@@ -15,7 +15,7 @@
         <div class="row">
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group me-2" role="group" aria-label="Second group">
-                    <a href="/developers-create" type="button" class="btn btn-primary">New</a>
+                    <a href="/developersJSP/new" type="button" class="btn btn-primary">New</a>
                 </div>
             </div>
         </div>

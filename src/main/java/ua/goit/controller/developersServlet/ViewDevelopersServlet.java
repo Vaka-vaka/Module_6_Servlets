@@ -25,7 +25,7 @@ public class ViewDevelopersServlet extends HttpServlet {
     private DevelopersService service;
 
     private static final Logger LOGGER = LogManager.getLogger(ViewDevelopersServlet.class);
-    private static Gson jsonParser = new Gson();
+    private static final Gson jsonParser = new Gson();
 
     @Override
     public void init() throws ServletException {
@@ -36,11 +36,11 @@ public class ViewDevelopersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String requestURI = req.getRequestURI();
         String id = requestURI.substring(15);
-//        if ("new".equalsIgnoreCase(id)) {
-//            req.setAttribute("user", new User());
-//            req.setAttribute("isNew", true);
-//            req.getRequestDispatcher("/jsp/user.jsp").forward(req, resp);
-//        }
+        if ("new".equalsIgnoreCase(id)) {
+            req.setAttribute("developers", new Developers());
+            req.setAttribute("isNew", true);
+            req.getRequestDispatcher("/view/jsp/viewDevelopersJSP.jsp").forward(req, resp);
+        }
         Optional<Developers> developersOptional = service.get(Long.parseLong(id));
         if (developersOptional.isPresent()) {
             Developers developers = developersOptional.get();
@@ -52,10 +52,21 @@ public class ViewDevelopersServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      HandleBodyUtil.getModelFromStream(req.getInputStream(), Developers.class)
-                      .ifPresent(user -> {
-                          service.update(user);
-                      });
+//      HandleBodyUtil.getModelFromStream(req.getInputStream(), Developers.class)
+//                      .ifPresent(user -> {
+//                          service.update(user);
+//                      });
+            Developers developers = null;
+        try (InputStream inputStream = req.getInputStream();
+             Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8.name())) {
+            String jsonStr = scanner.nextLine();
+            developers = jsonParser.fromJson(jsonStr, Developers.class);
+        } catch (IOException e) {
+            LOGGER.error("Request body getting error", e);
+        }
+        if(developers != null) {
+            service.update(developers);
+        }
         resp.sendRedirect("/developersJSP");
     }
 }

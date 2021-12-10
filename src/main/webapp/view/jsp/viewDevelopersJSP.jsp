@@ -69,8 +69,19 @@
         gender: gender.value,
         salary: salary.value,
    }
-    fetch('/developersJSP/ <%= developers.getId() %>' , {
-    method: 'PUT',
+
+   <% if(request.getAttribute("isNew")) {%>
+
+            let url = '/developersJSP%>';
+            let method = 'POST';
+         <% } else { %>
+            let url ='/developersJSP/<%= developers.getId() %>';
+            let method = 'PUT';
+         <% }
+
+        let url = '/developersJSP/<%= developers.getId() %>';
+    fetch( url, {
+    method: method,
     body: JSON.stringify(body)
     })
     . then( _ => {
