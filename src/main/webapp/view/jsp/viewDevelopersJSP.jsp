@@ -22,27 +22,32 @@
         <div class="row">
             <div class="mb-3">
                 <label for="id" class="form-label">ID</label>
-                <input type="text" disabled class="form-control" value = "<%= developers.getId() %>"
+                <input type="text" class="form-control"
+                value = "<%= developers.getId() == null ? "" : developers.getId() %>"
                        id="id" placeholder="id">
             </div>
             <div class="mb-3">
                 <label for="name_" class="form-label">Name_</label>
-                <input type="text" class="form-control" value = "<%= developers.getName_() %>"
+                <input type="text" class="form-control"
+                value = "<%= developers.getName_() == null ? "" : developers.getName_() %>"
                        id="name_" placeholder="name_">
             </div>
             <div class="mb-3">
                 <label for="age" class="form-label">Age</label>
-                <input type="text" class="form-control" value = "<%= developers.getAge() %>"
+                <input type="text" class="form-control"
+                value = "<%= developers.getAge() %>"
                        id="age" placeholder="age">
             </div>
             <div class="mb-3">
                 <label for="gender" class="form-label">Gender</label>
-                <input type="text" class="form-control" value = "<%= developers.getGender() %>"
+                <input type="text" class="form-control"
+                value = "<%= developers.getGender() == null ? "" : developers.getGender() %>"
                        id="gender" placeholder="gender">
             </div>
             <div class="mb-3">
                 <label for="salary" class="form-label">Salary</label>
-                <input type="text" class="form-control" value = "<%= developers.getSalary() %>"
+                <input type="text" class="form-control"
+                value = "<%= developers.getSalary() %>"
                        id="salary" placeholder="salary">
             </div>
     </div>
@@ -69,17 +74,13 @@
         gender: gender.value,
         salary: salary.value,
    }
-
-   <% if(request.getAttribute("isNew")) {%>
-
-            let url = '/developersJSP%>';
-            let method = 'POST';
-         <% } else { %>
-            let url ='/developersJSP/<%= developers.getId() %>';
-            let method = 'PUT';
-         <% }
-
-        let url = '/developersJSP/<%= developers.getId() %>';
+<% if(developers.getId() == null) {%>
+         let url = '/developersJSP';
+         let method = 'POST';
+      <% } else { %>
+         let url ='/developersJSP/<%= developers.getId() %>';
+         let method = 'PUT';
+      <% } %>
     fetch( url, {
     method: method,
     body: JSON.stringify(body)
