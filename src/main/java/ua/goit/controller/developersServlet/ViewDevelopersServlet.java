@@ -24,8 +24,8 @@ public class ViewDevelopersServlet extends HttpServlet {
 
     private DevelopersService service;
 
-    private static final Logger LOGGER = LogManager.getLogger(ViewDevelopersServlet.class);
-    private static final Gson jsonParser = new Gson();
+    public static final Logger LOGGER = LogManager.getLogger(ViewDevelopersServlet.class);
+    protected Gson jsonParser = new Gson();
 
     @Override
     public void init() throws ServletException {
@@ -59,7 +59,7 @@ public class ViewDevelopersServlet extends HttpServlet {
             Developers developers = null;
         try (InputStream inputStream = req.getInputStream();
              Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8.name())) {
-            String jsonStr = scanner.nextLine();
+            String jsonStr = scanner.next();
             developers = jsonParser.fromJson(jsonStr, Developers.class);
         } catch (IOException e) {
             LOGGER.error("Request body getting error", e);
