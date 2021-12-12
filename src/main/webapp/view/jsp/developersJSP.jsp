@@ -43,14 +43,14 @@
                       <td><%= developers.getAge() %></td>
                       <td><%= developers.getGender() %></td>
                       <td><%= developers.getSalary() %></td>
-                            <td>
+                      <td>
                                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                         <div class="btn-group me-2" role="group" aria-label="Second group">
                                             <a href = "/developersJSP/<%= developers.getId() %>" type="button" class="btn btn-warning">Edit</a>
-                                            <a href = "/developers-delete?id={{id}}" type="button" class="btn btn-danger">Remove</a>
+                                            <a href = "/developersJSP?deleteId=<%= developers.getId() %>" type="button" class="btn btn-danger">Remove</a>
                                         </div>
                                     </div>
-                                </td>
+                      </td>
                 <tr>
                <% } %>
 
