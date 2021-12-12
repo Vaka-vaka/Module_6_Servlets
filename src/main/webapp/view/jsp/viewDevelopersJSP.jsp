@@ -23,7 +23,7 @@
             <div class="mb-3">
                 <label for="id" class="form-label">ID</label>
                 <input type="text" class="form-control"
-                value = "<%= developers.getId() == null ? "" : developers.getId() %>"
+                value = "<%= developers.getId() == 0 ? "" : developers.getId() %>"
                        id="id" placeholder="id">
             </div>
             <div class="mb-3">
@@ -35,7 +35,7 @@
             <div class="mb-3">
                 <label for="age" class="form-label">Age</label>
                 <input type="text" class="form-control"
-                value = "<%= developers.getAge() %>"
+                value = "<%= developers.getAge() == 0 ? "" : developers.getAge() %>"
                        id="age" placeholder="age">
             </div>
             <div class="mb-3">
@@ -47,7 +47,7 @@
             <div class="mb-3">
                 <label for="salary" class="form-label">Salary</label>
                 <input type="text" class="form-control"
-                value = "<%= developers.getSalary() %>"
+                value = "<%= developers.getSalary() == 0 ? "" : developers.getSalary() %>"
                        id="salary" placeholder="salary">
             </div>
     </div>
@@ -68,13 +68,20 @@
 
     function save() {
     let body = {
-        id: id.value,
+    <% if(developers.getId() != null) {%>
+             id: id.value,
+          <% } %>
+
         name_: name_.value,
-        age: age.value,
+
+             age: age.value,
+
         gender: gender.value,
-        salary: salary.value,
+
+             salary: salary.value,
+
    }
-<% if(developers.getId() == null) {%>
+<% if(developers.getId() == 0) {%>
          let url = '/developersJSP';
          let method = 'POST';
       <% } else { %>
