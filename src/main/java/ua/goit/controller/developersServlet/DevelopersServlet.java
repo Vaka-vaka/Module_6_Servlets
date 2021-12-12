@@ -9,9 +9,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ua.goit.model.body.Developers;
 import ua.goit.service.DevelopersService;
+import ua.goit.service.HandleBodyUtil;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @WebServlet("/developersJSP")
 public class DevelopersServlet extends HttpServlet {
@@ -25,14 +27,24 @@ public class DevelopersServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Developers> all = service.getAll();
-        Object[] developersJSP = all.toArray();
-        req.setAttribute("developersJSP", developersJSP);
-        req.getRequestDispatcher("/view/jsp/developersJSP.jsp").forward(req, resp);
+        String deleteId = req.getParameter("deleteId");
+        if (deleteId != null) {
+            Developers developers = new Developers();
+            developers.setId(Long.parseLong(deleteId));
+            service.delete(developers);
+            resp.sendRedirect("/developersJSP");
+        } else {
+            List<Developers> all = service.getAll();
+            Object[] developersJSP = all.toArray();
+            req.setAttribute("developersJSP", developersJSP);
+            req.getRequestDispatcher("/view/jsp/developersJSP.jsp").forward(req, resp);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        Optional<Developers> modelFromStream = HandleBodyUtil.getModelFromStream(req.getInputStream(), Developers.class);
+        modelFromStream.ifPresent(developers -> service.create(developers));
+        resp.sendRedirect("/developersJSP");
     }
 }
