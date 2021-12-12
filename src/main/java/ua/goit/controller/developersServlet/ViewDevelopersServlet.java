@@ -52,21 +52,21 @@ public class ViewDevelopersServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//      HandleBodyUtil.getModelFromStream(req.getInputStream(), Developers.class)
-//                      .ifPresent(user -> {
-//                          service.update(user);
-//                      });
-            Developers developers = null;
-        try (InputStream inputStream = req.getInputStream();
-             Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8.name())) {
-            String jsonStr = scanner.next();
-            developers = jsonParser.fromJson(jsonStr, Developers.class);
-        } catch (IOException e) {
-            LOGGER.error("Request body getting error", e);
-        }
-        if(developers != null) {
-            service.update(developers);
-        }
+      HandleBodyUtil.getModelFromStream(req.getInputStream(), Developers.class)
+                      .ifPresent(developers -> {
+                          service.update(developers);
+                      });
+//            Developers developers = null;
+//        try (InputStream inputStream = req.getInputStream();
+//             Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8.name())) {
+//            String jsonStr = scanner.next();
+//            developers = jsonParser.fromJson(jsonStr, Developers.class);
+//        } catch (IOException e) {
+//            LOGGER.error("Request body getting error", e);
+//        }
+//        if(developers != null) {
+//            service.update(developers);
+//        }
         resp.sendRedirect("/developersJSP");
     }
 }
