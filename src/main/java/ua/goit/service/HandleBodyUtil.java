@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class HandleBodyUtil {
     private static final Logger LOGGER = LogManager.getLogger(HandleBodyUtil.class);
 
-    private static Gson jsonParser = new Gson();
+    private static final Gson jsonParser = new Gson();
 
     public static <T> Optional<T> getModelFromStream(InputStream in, Class<T> returnType) {
         try (InputStream inputStream = in;
