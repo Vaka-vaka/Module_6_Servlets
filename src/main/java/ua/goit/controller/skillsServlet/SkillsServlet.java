@@ -19,7 +19,7 @@ public class SkillsServlet extends HttpServlet{
     private SkillsService service;
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         this.service = (SkillsService) getServletContext().getAttribute("skillsService" );
     }
 
@@ -35,14 +35,15 @@ public class SkillsServlet extends HttpServlet{
             List<Skills> all = service.getAll();
             Object[] skillsJSP = all.toArray();
             req.setAttribute("skillsJSP", skillsJSP);
-            req.getRequestDispatcher("/view/jsp/skillsJSP.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/skillsJSP.jsp").forward(req, resp);
         }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Optional<Skills> modelFromStream = HandleBodyUtil.getModelFromStream(req.getInputStream(), Skills.class);
         modelFromStream.ifPresent(skills -> service.create(skills));
         resp.sendRedirect("/skillsJSP");
     }
+
 }

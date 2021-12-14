@@ -9,7 +9,7 @@
 
 <jsp:include page = "navigators.jsp"/>
 
-<% ua.goit.model.body.Skills  skills = (ua.goit.model.body.Skills) request.getAttribute("skills"); %>
+<% ua.goit.model.Skills  skills = (ua.goit.model.Skills) request.getAttribute("skills"); %>
 
 <div class="container">
     <div class="row">

@@ -24,7 +24,7 @@ public class ViewDevelopersServlet extends HttpServlet {
     protected Gson jsonParser = new Gson();
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         this.service = (DevelopersService) getServletContext().getAttribute("developersService" );
     }
 
@@ -47,22 +47,11 @@ public class ViewDevelopersServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
       HandleBodyUtil.getModelFromStream(req.getInputStream(), Developers.class)
                       .ifPresent(developers -> {
                           service.update(developers);
                       });
-//            Developers developers = null;
-//        try (InputStream inputStream = req.getInputStream();
-//             Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8.name())) {
-//            String jsonStr = scanner.next();
-//            developers = jsonParser.fromJson(jsonStr, Developers.class);
-//        } catch (IOException e) {
-//            LOGGER.error("Request body getting error", e);
-//        }
-//        if(developers != null) {
-//            service.update(developers);
-//        }
         resp.sendRedirect("/developersJSP");
     }
 }

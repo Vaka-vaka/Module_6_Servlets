@@ -10,16 +10,16 @@
                     <a class="nav-link" aria-current="page" href="/developersJSP">Developers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/skills">Skills</a>
+                    <a class="nav-link" href="/skillsJSP">Skills</a>
                 </li>
                 <li class="nav-item">
-                     <a class="nav-link" href="/projects">Projects</a>
+                     <a class="nav-link" href="/projectsJSP">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/companies">Companies</a>
+                    <a class="nav-link" href="/companiesJSP">Companies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/customers">Customers</a>
+                    <a class="nav-link" href="/customersJSP">Customers</a>
                 </li>
             </ul>
         </div>
