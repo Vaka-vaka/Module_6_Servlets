@@ -1,7 +1,6 @@
 package ua.goit.controller.developersServlet;
 
 import com.google.gson.Gson;
-import com.sun.net.httpserver.HttpExchange;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,15 +8,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ua.goit.model.body.Developers;
+import ua.goit.model.Developers;
 import ua.goit.service.DevelopersService;
 import ua.goit.service.HandleBodyUtil;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.Optional;
-import java.util.Scanner;
 
 @WebServlet("/developersJSP/*")
 public class ViewDevelopersServlet extends HttpServlet {
@@ -39,13 +35,13 @@ public class ViewDevelopersServlet extends HttpServlet {
         if ("new".equalsIgnoreCase(id)) {
             req.setAttribute("developers", new Developers());
             req.setAttribute("isNew", true);
-            req.getRequestDispatcher("/view/jsp/viewDevelopersJSP.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/viewDevelopersJSP.jsp").forward(req, resp);
         }
         Optional<Developers> developersOptional = service.get(Long.parseLong(id));
         if (developersOptional.isPresent()) {
             Developers developers = developersOptional.get();
             req.setAttribute("developers", developers);
-            req.getRequestDispatcher("/view/jsp/viewDevelopersJSP.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/viewDevelopersJSP.jsp").forward(req, resp);
         }
         resp.sendRedirect("/developersJSP");
     }

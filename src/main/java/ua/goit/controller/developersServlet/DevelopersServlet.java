@@ -7,7 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ua.goit.model.body.Developers;
+import ua.goit.model.Developers;
 import ua.goit.service.DevelopersService;
 import ua.goit.service.HandleBodyUtil;
 
@@ -37,7 +37,7 @@ public class DevelopersServlet extends HttpServlet {
             List<Developers> all = service.getAll();
             Object[] developersJSP = all.toArray();
             req.setAttribute("developersJSP", developersJSP);
-            req.getRequestDispatcher("/view/jsp/developersJSP.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/developersJSP.jsp").forward(req, resp);
         }
     }
 

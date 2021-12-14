@@ -111,7 +111,7 @@
               <archive>
                 <manifest>
                   <mainClass>
-                    ua.goit.model.Main
+                      ua.goit.Main
                   </mainClass>
                 </manifest>
               </archive>

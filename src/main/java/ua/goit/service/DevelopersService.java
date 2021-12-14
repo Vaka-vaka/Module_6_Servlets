@@ -2,8 +2,8 @@ package ua.goit.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ua.goit.model.body.Developers;
-import ua.goit.model.dao.DevelopersDao;
+import ua.goit.model.Developers;
+import ua.goit.dao.DevelopersDao;
 
 import java.util.List;
 import java.util.Optional;
