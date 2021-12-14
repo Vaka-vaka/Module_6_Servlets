@@ -8,8 +8,8 @@
 
       <jsp:include page = "navigators.jsp"/>
 
-      <p>Today's date: <%= (new java.util.Date()). toLocaleString()
+      <h2>Today's date: <%= (new java.util.Date()). toLocaleString()
 
-      %></p>
+      %></h2>
       </body>
 </html>
