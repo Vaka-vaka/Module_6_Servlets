@@ -27,29 +27,17 @@
                        id="id" placeholder="id">
             </div>
             <div class="mb-3">
-                <label for="name_" class="form-label">Name_</label>
+                <label for="language" class="form-label">Language</label>
                 <input type="text" class="form-control"
-                value = "<%= developers.getName_() == null ? "" : developers.getName_() %>"
-                       id="name_" placeholder="name_">
+                value = "<%= skills.getLanguage() == null ? "" : skills.getLanguage() %>"
+                       id="language" placeholder="language">
             </div>
             <div class="mb-3">
-                <label for="age" class="form-label">Age</label>
-                <input type="text" class="form-control"
-                value = "<%= developers.getAge() == 0 ? "" : developers.getAge() %>"
-                       id="age" placeholder="age">
-            </div>
-            <div class="mb-3">
-                <label for="gender" class="form-label">Gender</label>
-                <input type="text" class="form-control"
-                value = "<%= developers.getGender() == null ? "" : developers.getGender() %>"
-                       id="gender" placeholder="gender">
-            </div>
-            <div class="mb-3">
-                <label for="salary" class="form-label">Salary</label>
-                <input type="text" class="form-control"
-                value = "<%= developers.getSalary() == 0 ? "" : developers.getSalary() %>"
-                       id="salary" placeholder="salary">
-            </div>
+                            <label for="level_skills" class="form-label">Level_skills</label>
+                            <input type="text" class="form-control"
+                            value = "<%= skills.getLevel_skills() == null ? "" : skills.getLevel_skills() %>"
+                                   id="level_skills" placeholder="level_skills">
+                        </div>
     </div>
     <div class="row">
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -61,31 +49,25 @@
 </div>
 <script>
     let id = document.getElementById('id');
-    let name_ = document.getElementById('name_');
-    let age = document.getElementById('age');
-    let gender = document.getElementById('gender');
-    let salary = document.getElementById('salary');
+    let language = document.getElementById('language');
+    let level_skills = document.getElementById('level_skills');
 
     function save() {
     let body = {
-    <% if(developers.getId() != null) {%>
-             id: id.value,
-          <% } %>
+    <% if(skills.getId() != null) {%>
+         id: id.value,
+    <% } %>
 
-        name_: name_.value,
+        language: language.value,
 
-             age: age.value,
-
-        gender: gender.value,
-
-             salary: salary.value,
-
+        level_skills: level_skills.value,
    }
-<% if(developers.getId() == 0) {%>
-         let url = '/developersJSP';
+
+<% if(skills.getId() == 0) {%>
+         let url = '/skillsJSP';
          let method = 'POST';
       <% } else { %>
-         let url ='/developersJSP/<%= developers.getId() %>';
+         let url ='/skillsJSP/<%= skills.getId() %>';
          let method = 'PUT';
       <% } %>
     fetch( url, {
@@ -93,7 +75,7 @@
     body: JSON.stringify(body)
     })
     . then( _ => {
-        window.location.href = '/developersJSP';
+        window.location.href = '/skillsJSP';
     }
     );
   };

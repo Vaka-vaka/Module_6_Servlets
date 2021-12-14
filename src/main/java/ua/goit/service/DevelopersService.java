@@ -1,3 +1,10 @@
+/**
+ * Module 6. Servlets
+ *
+ * @autor Valentin Mozul
+ * @version of 14.12.2021
+ */
+
 package ua.goit.service;
 
 import org.apache.logging.log4j.LogManager;

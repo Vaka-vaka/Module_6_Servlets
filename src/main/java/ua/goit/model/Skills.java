@@ -12,7 +12,7 @@ import java.util.*;
 
 public class Skills implements Identity {
 
-    private Long id;
+    private long id;
     private String language;
     private String level_skills;
 
@@ -20,7 +20,7 @@ public class Skills implements Identity {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -1,3 +1,10 @@
+/**
+ * Module 6. Servlets
+ *
+ * @autor Valentin Mozul
+ * @version of 14.12.2021
+ */
+
 package ua.goit.controller.developersServlet;
 
 import com.google.gson.Gson;
