@@ -12,6 +12,8 @@ import org.apache.logging.log4j.Logger;
 import ua.goit.console.Command;
 import ua.goit.dao.CompaniesDao;
 import ua.goit.model.Companies;
+import ua.goit.service.CompaniesService;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -20,7 +22,7 @@ public class CompaniesCommand implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger(CompaniesCommand.class);
 
-    private final CompaniesDao companiesDao = new CompaniesDao();
+    private final CompaniesService companiesService = CompaniesService.getInstance();
 
     @Override
     public void handle(String params, Consumer<Command> setActive) {
@@ -47,7 +49,7 @@ public class CompaniesCommand implements Command {
     }
 
     private void getAll() {
-        List<Companies> all = companiesDao.getAll();
+        List<Companies> all = companiesService.getAll();
         System.out.println("Returned " + all.size() + " companies");
         for (Companies companies : all) {
             System.out.println(companies);
@@ -56,13 +58,13 @@ public class CompaniesCommand implements Command {
 
     private void update(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Companies> optionalCompanies = companiesDao
+        Optional<Companies> optionalCompanies = companiesService
                 .get(Long.parseLong(paramsArray[0]));
         if (optionalCompanies.isPresent()) {
             Companies companies = optionalCompanies.get();
             companies.setName_(paramsArray[1]);
             companies.setCity(paramsArray[2]);
-            companiesDao.update(companies);
+            companiesService.update(companies);
         } else {
             System.out.println("Companies with id " + paramsArray[0] + " not found");
         }
@@ -74,12 +76,12 @@ public class CompaniesCommand implements Command {
         companies.setId(Long.parseLong(paramsArray[0]));
         companies.setName_(paramsArray[1]);
         companies.setCity(paramsArray[2]);
-        companiesDao.create(companies);
+        companiesService.create(companies);
     }
 
     private void get(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Companies> companies = companiesDao
+        Optional<Companies> companies = companiesService
                 .get(Long.parseLong(paramsArray[0]));
         if (companies.isPresent()) {
             System.out.println(companies.get());
@@ -90,10 +92,10 @@ public class CompaniesCommand implements Command {
 
     private void delete(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Companies> companies = companiesDao
+        Optional<Companies> companies = companiesService
                 .get(Long.parseLong(paramsArray[0]));
         if (companies.isPresent()) {
-            companiesDao.delete(companies.get());
+            companiesService.delete(companies.get());
         } else {
             System.out.println("Companies with id " + paramsArray[0] + " not found");
         }

@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class Companies implements Identity {
 
-    private Long id;
+    private long id;
     private String name_;
     private String city;
 
@@ -21,7 +21,7 @@ public class Companies implements Identity {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

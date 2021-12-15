@@ -16,6 +16,18 @@ import java.util.Optional;
 
 public class CompaniesDao extends AbstractDao<Companies>{
 
+    private static CompaniesDao  instance;
+
+    private CompaniesDao() {
+    }
+
+    public static CompaniesDao getInstance() {
+        if (instance == null) {
+            instance = new CompaniesDao();
+        }
+        return instance;
+    }
+
     private static final Logger LOGGER = LogManager.getLogger(CompaniesDao.class);
 
     @Override

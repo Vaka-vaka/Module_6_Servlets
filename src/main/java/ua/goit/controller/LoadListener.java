@@ -12,6 +12,7 @@ import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
 import ua.goit.config.DbMigration;
+import ua.goit.service.CompaniesService;
 import ua.goit.service.DevelopersService;
 import ua.goit.service.ProjectsService;
 import ua.goit.service.SkillsService;
@@ -26,7 +27,7 @@ public class LoadListener implements ServletContextListener {
         servletContext.setAttribute("developersService", DevelopersService.getInstance());
         servletContext.setAttribute("skillsService", SkillsService.getInstance());
         servletContext.setAttribute("projectsService", ProjectsService.getInstance());
-//        servletContext.setAttribute("developersService", DevelopersService.getInstance());
+        servletContext.setAttribute("companiesService", CompaniesService.getInstance());
 //        servletContext.setAttribute("developersService", DevelopersService.getInstance());
 
     }
