@@ -12,50 +12,51 @@ import java.util.*;
 
 public class Projects implements Identity {
 
-    private Long Id;
-    private String Name_;
-    private String Language;
-    private int Cost;
-    private Date Creation_date;
+    private long id;
+    private String name_;
+    private String language;
+    private int cost;
+    private Date creation_date;
 
+    @Override
     public Long getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName_() {
-        return Name_;
+        return name_;
     }
 
     public void setName_(String name_) {
-        Name_ = name_;
+        this.name_ = name_;
     }
 
     public String getLanguage() {
-        return Language;
+        return language;
     }
 
     public void setLanguage(String language) {
-        Language = language;
+        this.language = language;
     }
 
     public int getCost() {
-        return Cost;
+        return cost;
     }
 
     public void setCost(int cost) {
-        Cost = cost;
+        this.cost = cost;
     }
 
     public Date getCreation_date() {
-        return Creation_date;
+        return creation_date;
     }
 
     public void setCreation_date(Date creation_date) {
-        Creation_date = creation_date;
+        this.creation_date = creation_date;
     }
 
     @Override
@@ -63,22 +64,22 @@ public class Projects implements Identity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Projects projects = (Projects) o;
-        return Cost == projects.Cost && Objects.equals(Id, projects.Id) && Objects.equals(Name_, projects.Name_) && Objects.equals(Language, projects.Language) && Objects.equals(Creation_date, projects.Creation_date);
+        return id == projects.id && cost == projects.cost && Objects.equals(name_, projects.name_) && Objects.equals(language, projects.language) && Objects.equals(creation_date, projects.creation_date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, Name_, Language, Cost, Creation_date);
+        return Objects.hash(id, name_, language, cost, creation_date);
     }
 
     @Override
     public String toString() {
         return "Projects{" +
-                "Id=" + Id +
-                ", Name_='" + Name_ + '\'' +
-                ", Language='" + Language + '\'' +
-                ", Cost=" + Cost +
-                ", Creation_date=" + Creation_date +
+                "id=" + id +
+                ", name_='" + name_ + '\'' +
+                ", language='" + language + '\'' +
+                ", cost=" + cost +
+                ", creation_date=" + creation_date +
                 '}';
     }
 }

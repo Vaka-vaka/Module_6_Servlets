@@ -15,6 +15,18 @@ import java.util.*;
 
 public class ProjectsDao extends AbstractDao<Projects> {
 
+    private static ProjectsDao  instance;
+
+    private ProjectsDao() {
+    }
+
+    public static ProjectsDao getInstance() {
+        if (instance == null) {
+            instance = new ProjectsDao();
+        }
+        return instance;
+    }
+
     private static final Logger LOGGER = LogManager.getLogger(ProjectsDao.class);
 
     @Override

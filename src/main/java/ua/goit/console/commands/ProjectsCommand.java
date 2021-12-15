@@ -12,6 +12,8 @@ import org.apache.logging.log4j.Logger;
 import ua.goit.console.Command;
 import ua.goit.dao.ProjectsDao;
 import ua.goit.model.Projects;
+import ua.goit.service.ProjectsService;
+
 import java.sql.Date;
 import java.text.ParseException;
 import java.util.List;
@@ -22,7 +24,7 @@ public class ProjectsCommand implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger(ProjectsCommand.class);
 
-    private final ProjectsDao projectsDao = new ProjectsDao();
+    private final ProjectsService projectsService = ProjectsService.getInstance();
 
     @Override
     public void handle(String params, Consumer<Command> setActive) throws ParseException {
@@ -49,7 +51,7 @@ public class ProjectsCommand implements Command {
     }
 
     private void getAll() {
-        List<Projects> all = projectsDao.getAll();
+        List<Projects> all = projectsService.getAll();
         System.out.println("Returned " + all.size() + " projects");
         for (Projects projects : all) {
             System.out.println(projects);
@@ -58,7 +60,7 @@ public class ProjectsCommand implements Command {
 
     private void update(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Projects> optionalProjects = projectsDao
+        Optional<Projects> optionalProjects = projectsService
                 .get(Long.parseLong(paramsArray[0]));
         if (optionalProjects.isPresent()) {
             Projects projects = optionalProjects.get();
@@ -67,7 +69,7 @@ public class ProjectsCommand implements Command {
             projects.setCost(Integer.parseInt(paramsArray[3]));
             Date date = new Date(System.currentTimeMillis());
             projects.setCreation_date(date);
-            projectsDao.update(projects);
+            projectsService.update(projects);
         } else {
             System.out.println("Projects with id " + paramsArray[0] + " not found");
         }
@@ -82,12 +84,12 @@ public class ProjectsCommand implements Command {
         projects.setCost(Integer.parseInt(paramsArray[3]));
         Date date = new Date(System.currentTimeMillis());
         projects.setCreation_date(date);
-        projectsDao.create(projects);
+        projectsService.create(projects);
     }
 
     private void get(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Projects> projects = projectsDao
+        Optional<Projects> projects = projectsService
                 .get(Long.parseLong(paramsArray[0]));
         if (projects.isPresent()) {
             System.out.println(projects.get());
@@ -98,10 +100,10 @@ public class ProjectsCommand implements Command {
 
     private void delete(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Projects> projects = projectsDao
+        Optional<Projects> projects = projectsService
                 .get(Long.parseLong(paramsArray[0]));
         if (projects.isPresent()) {
-            projectsDao.delete(projects.get());
+            projectsService.delete(projects.get());
         } else {
             System.out.println("Projects with id " + paramsArray[0] + " not found");
         }
