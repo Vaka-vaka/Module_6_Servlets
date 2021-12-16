@@ -5,16 +5,14 @@
  * @version of 15.12.2021
  */
 
-package ua.goit.controller.customers;
+package ua.goit.controller.customerServlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ua.goit.model.Companies;
 import ua.goit.model.Customers;
-import ua.goit.service.CompaniesService;
 import ua.goit.service.CustomersService;
 import ua.goit.service.HandleBodyUtil;
 

@@ -5,7 +5,7 @@
  * @version of 15.12.2021
  */
 
-package ua.goit.controller.customers;
+package ua.goit.controller.customerServlet;
 
 import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
@@ -15,9 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ua.goit.model.Companies;
 import ua.goit.model.Customers;
-import ua.goit.service.CompaniesService;
 import ua.goit.service.CustomersService;
 import ua.goit.service.HandleBodyUtil;
 
