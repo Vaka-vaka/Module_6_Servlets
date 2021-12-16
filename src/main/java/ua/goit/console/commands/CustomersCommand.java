@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import ua.goit.console.Command;
 import ua.goit.dao.CustomersDao;
 import ua.goit.model.Customers;
+import ua.goit.service.CustomersService;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +22,7 @@ public class CustomersCommand implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger(CustomersCommand.class);
 
-    private final CustomersDao customersDao = new CustomersDao();
+    private final CustomersService customersService = CustomersService.getInstance();
 
     @Override
     public void handle(String params, Consumer<Command> setActive) {
@@ -48,7 +49,7 @@ public class CustomersCommand implements Command {
     }
 
     private void getAll() {
-        List<Customers> all = customersDao.getAll();
+        List<Customers> all = customersService.getAll();
         System.out.println("Returned " + all.size() + " companies");
         for (Customers customers : all) {
             System.out.println(customers);
@@ -57,13 +58,13 @@ public class CustomersCommand implements Command {
 
     private void update(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Customers> optionalCustomers = customersDao
+        Optional<Customers> optionalCustomers = customersService
                 .get(Long.parseLong(paramsArray[0]));
         if (optionalCustomers.isPresent()) {
             Customers customers = optionalCustomers.get();
             customers.setName_(paramsArray[1]);
             customers.setCity(paramsArray[2]);
-            customersDao.update(customers);
+            customersService.update(customers);
         } else {
             System.out.println("Customers with id " + paramsArray[0] + " not found");
         }
@@ -75,12 +76,12 @@ public class CustomersCommand implements Command {
         customers.setId(Long.parseLong(paramsArray[0]));
         customers.setName_(paramsArray[1]);
         customers.setCity(paramsArray[2]);
-        customersDao.create(customers);
+        customersService.create(customers);
     }
 
     private void get(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Customers> customers = customersDao
+        Optional<Customers> customers = customersService
                 .get(Long.parseLong(paramsArray[0]));
         if (customers.isPresent()) {
             System.out.println(customers.get());
@@ -91,10 +92,10 @@ public class CustomersCommand implements Command {
 
     private void delete(String params) {
         String[] paramsArray = params.split(" ");
-        Optional<Customers> customers = customersDao
+        Optional<Customers> customers = customersService
                 .get(Long.parseLong(paramsArray[0]));
         if (customers.isPresent()) {
-            customersDao.delete(customers.get());
+            customersService.delete(customers.get());
         } else {
             System.out.println("Customers with id " + paramsArray[0] + " not found");
         }

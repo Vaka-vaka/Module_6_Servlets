@@ -47,14 +47,14 @@ public class ProjectsDao extends AbstractDao<Projects> {
 
     @Override
     public Optional<Projects> create(Projects entity) {
-        String sql = "insert into projects(id, name_, language, creation_date, cost)" +
+        String sql = "insert into projects(id, name_, language, cost, creation_date)" +
                 " values (?, ?, ?, ?, ?)";
         int count = DbHelper.executeWithPreparedStatement(sql, ps -> {
             ps.setLong(1, entity.getId());
             ps.setString(2, entity.getName_());
             ps.setString(3, entity.getLanguage());
-            ps.setDate(4, (java.sql.Date) entity.getCreation_date());
-            ps.setInt(5, entity.getCost());
+            ps.setInt(4, entity.getCost());
+            ps.setDate(5, (java.sql.Date) entity.getCreation_date());
         });
         LOGGER.info("Created " + count + " records");
         return Optional.empty();
@@ -62,13 +62,13 @@ public class ProjectsDao extends AbstractDao<Projects> {
 
     @Override
     public void update(Projects entity) {
-        String sql = "update projects set name_ = ?, language = ?, creation_date = ?, " +
-                "cost = ? where id = ?";
+        String sql = "update projects set name_ = ?, language = ?, cost = ?" +
+                ", creation_date = ? where id = ?";
         int count = DbHelper.executeWithPreparedStatement(sql, ps -> {
             ps.setString(1, entity.getName_());
             ps.setString(2, entity.getLanguage());
-            ps.setDate(3, (java.sql.Date) entity.getCreation_date());
-            ps.setInt(4, entity.getCost());
+            ps.setInt(3, entity.getCost());
+            ps.setDate(4, (java.sql.Date) entity.getCreation_date());
             ps.setLong(5, entity.getId());
         });
         LOGGER.info("Updated " + count + " records");

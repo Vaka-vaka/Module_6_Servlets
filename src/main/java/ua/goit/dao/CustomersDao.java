@@ -16,6 +16,18 @@ import java.util.Optional;
 
 public class CustomersDao extends AbstractDao<Customers> {
 
+    private static CustomersDao  instance;
+
+    private CustomersDao() {
+    }
+
+    public static CustomersDao getInstance() {
+        if (instance == null) {
+            instance = new CustomersDao();
+        }
+        return instance;
+    }
+
     private static final Logger LOGGER = LogManager.getLogger(CustomersDao.class);
 
     @Override

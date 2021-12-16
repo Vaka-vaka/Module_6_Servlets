@@ -27,7 +27,7 @@ public class ProjectsCommand implements Command {
     private final ProjectsService projectsService = ProjectsService.getInstance();
 
     @Override
-    public void handle(String params, Consumer<Command> setActive) throws ParseException {
+    public void handle(String params, Consumer<Command> setActive) {
         String[] paramsArray = params.split(" ");
         String subParams = String.join(" "
                 , params.replace(paramsArray[0] + " ", ""));
