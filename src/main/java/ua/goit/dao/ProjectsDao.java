@@ -15,6 +15,9 @@ import java.util.*;
 
 public class ProjectsDao extends AbstractDao<Projects> {
 
+    java.util.Date date = new java.util.Date();
+    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
     private static ProjectsDao  instance;
 
     private ProjectsDao() {
@@ -54,7 +57,7 @@ public class ProjectsDao extends AbstractDao<Projects> {
             ps.setString(2, entity.getName_());
             ps.setString(3, entity.getLanguage());
             ps.setInt(4, entity.getCost());
-            ps.setDate(5, (java.sql.Date) entity.getCreation_date());
+            ps.setDate(5, sqlDate);
         });
         LOGGER.info("Created " + count + " records");
         return Optional.empty();
@@ -68,7 +71,7 @@ public class ProjectsDao extends AbstractDao<Projects> {
             ps.setString(1, entity.getName_());
             ps.setString(2, entity.getLanguage());
             ps.setInt(3, entity.getCost());
-            ps.setDate(4, (java.sql.Date) entity.getCreation_date());
+            ps.setDate(4, sqlDate);
             ps.setLong(5, entity.getId());
         });
         LOGGER.info("Updated " + count + " records");
