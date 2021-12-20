@@ -82,7 +82,7 @@
         creation_date: creation_date.value,
    }
 
-<% if(projects.getId() == null) {%>
+<% if(projects.getId() == 0) {%>
          let url = '/projectsJSP';
          let method = 'POST';
       <% } else { %>
