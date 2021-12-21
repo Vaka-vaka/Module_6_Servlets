@@ -48,7 +48,7 @@
                     <label for="creation_date" class="form-label">Creation_date</label>
                     <input type="text" class="form-control"
                     value = "<%= projects.getCreation_date() == null ? "" : projects.getCreation_date() %>"
-                           id="creation_date" placeholder="creation_date">
+                           id="creation_date" placeholder="year-month-day">
             </div>
 
     </div>
