@@ -50,6 +50,7 @@ public class ProjectsServlet extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Optional<Projects> modelFromStream = HandleBodyUtil.getModelFromStream(req.getInputStream(), Projects.class);
         modelFromStream.ifPresent(projects -> service.create(projects));
+        System.out.println("Created project with status code:" + resp.getStatus());
         resp.sendRedirect("/projectsJSP");
     }
 }
