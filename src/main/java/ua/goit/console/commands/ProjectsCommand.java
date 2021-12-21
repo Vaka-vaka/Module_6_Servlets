@@ -22,9 +22,6 @@ import java.util.function.Consumer;
 
 public class ProjectsCommand implements Command {
 
-    java.util.Date date = new java.util.Date();
-    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-
     private static final Logger LOGGER = LogManager.getLogger(ProjectsCommand.class);
 
     private final ProjectsService projectsService = ProjectsService.getInstance();
@@ -70,7 +67,7 @@ public class ProjectsCommand implements Command {
             projects.setName_(paramsArray[1]);
             projects.setLanguage(paramsArray[2]);
             projects.setCost(Integer.parseInt(paramsArray[3]));
-            projects.setCreation_date(sqlDate);
+            projects.setCreation_date(paramsArray[4]);
             projectsService.update(projects);
         } else {
             System.out.println("Projects with id " + paramsArray[0] + " not found");
@@ -84,7 +81,7 @@ public class ProjectsCommand implements Command {
         projects.setName_(paramsArray[1]);
         projects.setLanguage(paramsArray[2]);
         projects.setCost(Integer.parseInt(paramsArray[3]));
-        projects.setCreation_date(sqlDate);
+        projects.setCreation_date(paramsArray[4]);
         projectsService.create(projects);
     }
 

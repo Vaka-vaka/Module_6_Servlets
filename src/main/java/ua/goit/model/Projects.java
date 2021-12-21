@@ -16,7 +16,7 @@ public class Projects implements Identity {
     private String name_;
     private String language;
     private int cost;
-    private Date creation_date;
+    private String creation_date;
 
     @Override
     public Long getId() {
@@ -51,11 +51,11 @@ public class Projects implements Identity {
         this.cost = cost;
     }
 
-    public Date getCreation_date() {
+    public String getCreation_date() {
         return creation_date;
     }
 
-    public void setCreation_date(Date creation_date) {
+    public void setCreation_date(String creation_date) {
         this.creation_date = creation_date;
     }
 

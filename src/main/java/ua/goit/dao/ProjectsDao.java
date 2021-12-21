@@ -11,12 +11,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.goit.model.Projects;
 import java.sql.*;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ProjectsDao extends AbstractDao<Projects> {
 
     java.util.Date date = new java.util.Date();
     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     private static ProjectsDao  instance;
 
@@ -44,7 +47,7 @@ public class ProjectsDao extends AbstractDao<Projects> {
         projects.setName_(resultSet.getString("name_"));
         projects.setLanguage(resultSet.getString("language"));
         projects.setCost(resultSet.getInt("cost"));
-        projects.setCreation_date(resultSet.getDate("creation_date"));
+        projects.setCreation_date(format.format(resultSet.getDate("creation_date")));
         return projects;
     }
 
@@ -57,7 +60,9 @@ public class ProjectsDao extends AbstractDao<Projects> {
             ps.setString(2, entity.getName_());
             ps.setString(3, entity.getLanguage());
             ps.setInt(4, entity.getCost());
-            ps.setDate(5, sqlDate);
+            if (entity.getCreation_date() != null) {
+                ps.setDate(5, new Date(Date.valueOf(entity.getCreation_date()).getTime()));
+            } else { ps.setDate(5, null); }
         });
         LOGGER.info("Created " + count + " records");
         return Optional.empty();
@@ -71,7 +76,9 @@ public class ProjectsDao extends AbstractDao<Projects> {
             ps.setString(1, entity.getName_());
             ps.setString(2, entity.getLanguage());
             ps.setInt(3, entity.getCost());
-            ps.setDate(4, sqlDate);
+            if (entity.getCreation_date() != null) {
+                ps.setDate(4, new Date(Date.valueOf(entity.getCreation_date()).getTime()));
+            } else { ps.setDate(4, null); }
             ps.setLong(5, entity.getId());
         });
         LOGGER.info("Updated " + count + " records");
