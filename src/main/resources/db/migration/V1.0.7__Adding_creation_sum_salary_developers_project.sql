@@ -4,3 +4,4 @@ FROM developers d
 JOIN developers_projects dp ON dp.dev_id = d.id
 JOIN projects p ON p.id = dp.projects_id
 GROUP BY p.name_;
+

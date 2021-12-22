@@ -19,8 +19,6 @@ public class SkillsService {
 
     private static SkillsService instance;
 
-    private static final Logger LOGGER = LogManager.getLogger(SkillsService.class);
-
     private final SkillsDao skillsDao = SkillsDao.getInstance();
 
     private SkillsService() {

@@ -21,6 +21,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/customersJSP">Customers</a>
                 </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Reports
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+
+                    <li><a class="dropdown-item" href="/salaryJSP">Report "Salary (sum) of all developers of a single project;"</a></li>
+
+                  </ul>
+                </li>
+
             </ul>
         </div>
     </div>

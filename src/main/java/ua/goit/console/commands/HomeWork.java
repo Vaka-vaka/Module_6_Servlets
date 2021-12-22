@@ -11,6 +11,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.goit.config.DataSourceHolder;
 import ua.goit.console.Command;
+import ua.goit.service.SalaryService;
+import ua.goit.service.SkillsService;
 
 import java.sql.Connection;
 import java.sql.*;
