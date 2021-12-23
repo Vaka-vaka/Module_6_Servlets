@@ -9,10 +9,13 @@ package ua.goit.dao;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ua.goit.config.DataSourceHolder;
 import ua.goit.model.Salary;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -38,11 +41,10 @@ public class SalaryDao extends AbstractDao<Salary> {
     }
 
     @Override
-    Salary mapToEntity(ResultSet resultSet) throws SQLException {
+    Salary mapToEntity(ResultSet rs) throws SQLException {
         Salary salary = new Salary();
-       // salary.setId(resultSet.getLong("id"));
-        salary.setProjectName(resultSet.getString("project_name"));
-        salary.setSumSalary(resultSet.getDouble("sum_salary"));
+        salary.setName_(rs.getString("name_"));
+        salary.setSumSalary(rs.getDouble("sum_salary"));
         return salary;
     }
 
@@ -71,6 +73,7 @@ public class SalaryDao extends AbstractDao<Salary> {
 
     @Override
     public void update(Salary entity) {
-
     }
+
+
 }

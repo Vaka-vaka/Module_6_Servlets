@@ -15,28 +15,29 @@ import jakarta.servlet.http.HttpServletResponse;
 import ua.goit.model.Salary;
 import ua.goit.model.Skills;
 import ua.goit.service.SalaryService;
-import ua.goit.service.SkillsService;
 
 import java.io.IOException;
 import java.util.List;
 
 
 @WebServlet("/salaryJSP")
-public class SalaryServlet extends HttpServlet {
+public class SalaryServletJSP extends HttpServlet {
 
     private SalaryService service;
 
     @Override
     public void init() {
-        this.service = (SalaryService) getServletContext().getAttribute("salaryService" );
-        System.out.println(service);
+        this.service = (SalaryService) getServletContext()
+                .getAttribute("salaryService");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/jsp/salaryJSP.jsp").forward(req, resp);
+            List<Salary> all = service.getAll();
+            Object[] salaryJSP = all.toArray();
+            req.setAttribute("salaryJSP", salaryJSP);
+            req.getRequestDispatcher("/jsp/salaryJSP.jsp").forward(req, resp);
     }
-
 
 }
 

@@ -7,6 +7,8 @@
 
 package ua.goit.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.goit.dao.SalaryDao;
 import ua.goit.model.Salary;
 import java.util.List;
@@ -15,8 +17,8 @@ import java.util.List;
 public class SalaryService {
 
     private static SalaryService instance;
-
-    private final SalaryDao salaryDao = SalaryDao.getInstance();
+    private static final Logger LOGGER = LogManager.getLogger(SalaryService.class);
+    private static final SalaryDao salaryDao = SalaryDao.getInstance();
 
     private SalaryService() {
     }

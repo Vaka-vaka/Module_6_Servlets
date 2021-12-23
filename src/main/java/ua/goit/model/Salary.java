@@ -13,15 +13,16 @@ import java.util.Objects;
 
 public class Salary implements Identity {
 
-    private String projectName;
+    private long id;
+    private String name_;
     private Double sumSalary;
 
-    public String getProjectName() {
-        return projectName;
+    public String getName_() {
+        return name_;
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    public void setName_(String name_) {
+        this.name_ = name_;
     }
 
     public Double getSumSalary() {
@@ -33,28 +34,28 @@ public class Salary implements Identity {
     }
 
     @Override
+    public Long getId() {
+        return null;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Salary salary = (Salary) o;
-        return Objects.equals(projectName, salary.projectName) && Objects.equals(sumSalary, salary.sumSalary);
+        return Objects.equals(name_, salary.name_) && Objects.equals(sumSalary, salary.sumSalary);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(projectName, sumSalary);
+        return Objects.hash(name_, sumSalary);
     }
 
     @Override
     public String toString() {
         return "Salary{" +
-                "projectName='" + projectName + '\'' +
+                "name_='" + name_ + '\'' +
                 ", sumSalary=" + sumSalary +
                 '}';
-    }
-
-    @Override
-    public Long getId() {
-        return null;
     }
 }

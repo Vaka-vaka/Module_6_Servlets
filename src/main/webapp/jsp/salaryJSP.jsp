@@ -21,14 +21,22 @@
         <table class="table">
             <thead>
             <tr>
-
             <th scope="col">Project name</th>
             <th scope="col">Sum salary developer</th>
             </tr>
             </thead>
-
-
-
+ <tbody>
+           <%
+             Object[] salaryJSP = (Object[]) request.getAttribute("salaryJSP");
+             for(Object objSalary : salaryJSP) {
+             ua.goit.model.Salary  salary = (ua.goit.model.Salary) objSalary;
+           %>
+             <tr>
+                 <td><%= salary.getName_() %></td>
+                 <td><%= salary.getSumSalary() %></td>
+              <tr>
+              <% } %>
+            </tbody>
         </table>
     </div>
 </div>

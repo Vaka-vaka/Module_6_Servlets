@@ -28,7 +28,7 @@
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
 
-                    <li><a class="dropdown-item" href="/salaryJSP">Report "Salary (sum) of all developers of a single project;"</a></li>
+                    <li><a class="dropdown-item" href="/salaryJSP">Report "Salary (sum) of all developers of a single project"</a></li>
 
                   </ul>
                 </li>
