@@ -24,11 +24,12 @@
 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Reports
+                   Home Work Module 4
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
 
-                    <li><a class="dropdown-item" href="/salaryJSP">Report "Salary (sum) of all developers of a single project"</a></li>
+                    <li><a class="dropdown-item" href="/salaryJSP">Report 1 "Salary (sum) of all developers of a single project"</a></li>
+                    <li><a class="dropdown-item" href="/developersIndividualProjectJSP">Report 2 "List of developers of an individual project"</a></li>
 
                   </ul>
                 </li>

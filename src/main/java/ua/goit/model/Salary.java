@@ -13,7 +13,6 @@ import java.util.Objects;
 
 public class Salary implements Identity {
 
-    private long id;
     private String name_;
     private Double sumSalary;
 

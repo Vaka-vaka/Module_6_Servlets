@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ua.goit.model.Salary;
-import ua.goit.model.Skills;
 import ua.goit.service.SalaryService;
 
 import java.io.IOException;
