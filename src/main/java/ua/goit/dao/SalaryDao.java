@@ -7,20 +7,14 @@
 
 package ua.goit.dao;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import ua.goit.config.DataSourceHolder;
 import ua.goit.model.Salary;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class SalaryDao extends AbstractDao<Salary> {
 
-    private static final Logger LOGGER = LogManager.getLogger(SalaryDao.class);
     private static SalaryDao instance;
 
     private SalaryDao() {
@@ -44,24 +38,6 @@ public class SalaryDao extends AbstractDao<Salary> {
         salary.setName_(rs.getString("name_"));
         salary.setSumSalary(rs.getDouble("sum_salary"));
         return salary;
-    }
-
-    public List<Salary> getSumProjectSalary(String projectName) {
-        String query = "select * from sum_salary_developers_project where project_name = ?";
-        List<Salary> resultList = new ArrayList<>();
-        try {
-            ResultSet resultSet = DbHelper.getWithPreparedStatement(
-                    query, ps -> {
-                        ps.setString(1, projectName);
-                    });
-            while (resultSet.next()) {
-                LOGGER.debug("Record was selected");
-                resultList.add(mapToEntity(resultSet));
-            }
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        }
-        return resultList;
     }
 
     @Override

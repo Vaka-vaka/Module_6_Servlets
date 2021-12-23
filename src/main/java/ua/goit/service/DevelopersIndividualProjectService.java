@@ -33,8 +33,4 @@ public class DevelopersIndividualProjectService {
     public List<DevelopersIndividualProject> getAll() {
         return developerIndividualProjectDao.getAll();
     }
-
-    public List<DevelopersIndividualProject> getListDevelopersProject(String projectName) {
-        return developerIndividualProjectDao.getListDevelopersProject(projectName);
-    }
 }

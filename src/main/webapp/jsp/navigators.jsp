@@ -30,7 +30,7 @@
 
                     <li><a class="dropdown-item" href="/salaryJSP">Report 1 "Salary (sum) of all developers of a single project"</a></li>
                     <li><a class="dropdown-item" href="/developersIndividualProjectJSP">Report 2 "List of developers of an individual project"</a></li>
-
+                     <li><a class="dropdown-item" href="/javaDevelopersJSP">Report 3 "A list of all Java developers"</a></li>
                   </ul>
                 </li>
 
