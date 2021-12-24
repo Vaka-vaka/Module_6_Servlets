@@ -7,12 +7,8 @@
 
 package ua.goit.service;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import ua.goit.dao.CompaniesDao;
-import ua.goit.dao.DevelopersDao;
 import ua.goit.model.Companies;
-import ua.goit.model.Developers;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,8 +16,6 @@ import java.util.Optional;
 public class CompaniesService {
 
     private static CompaniesService instance;
-
-    private static final Logger LOGGER = LogManager.getLogger(CompaniesService.class);
 
     private final CompaniesDao companiesDao = CompaniesDao.getInstance();
 

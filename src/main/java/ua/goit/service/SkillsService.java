@@ -7,8 +7,6 @@
 
 package ua.goit.service;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import ua.goit.model.Skills;
 import ua.goit.dao.SkillsDao;
 

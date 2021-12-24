@@ -13,9 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ua.goit.model.Companies;
-import ua.goit.model.Developers;
 import ua.goit.service.CompaniesService;
-import ua.goit.service.DevelopersService;
 import ua.goit.service.HandleBodyUtil;
 
 import java.io.IOException;

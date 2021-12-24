@@ -7,8 +7,6 @@
 
 package ua.goit.service;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import ua.goit.model.Developers;
 import ua.goit.dao.DevelopersDao;
 
@@ -18,8 +16,6 @@ import java.util.Optional;
 public class DevelopersService {
 
     private static DevelopersService instance;
-
-    private static final Logger LOGGER = LogManager.getLogger(DevelopersService.class);
 
     private final DevelopersDao developersDao = DevelopersDao.getInstance();
 

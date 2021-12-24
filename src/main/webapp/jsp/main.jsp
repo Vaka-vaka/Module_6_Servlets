@@ -1,3 +1,10 @@
+<%--
+ Module 6. Servlets
+
+ @autor Valentin Mozul
+ @version of 24.12.2021
+ --%>
+
 <!DOCTYPE html>
 <html lang="en">
       <head>

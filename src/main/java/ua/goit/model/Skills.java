@@ -8,6 +8,7 @@
 package ua.goit.model;
 
 import ua.goit.dao.to_interface.Identity;
+
 import java.util.*;
 
 public class Skills implements Identity {

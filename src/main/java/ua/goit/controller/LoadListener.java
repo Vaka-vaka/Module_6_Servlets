@@ -2,7 +2,7 @@
  * Module 6. Servlets
  *
  * @autor Valentin Mozul
- * @version of 14.12.2021
+ * @version of 24.12.2021
  */
 
 package ua.goit.controller;
@@ -30,5 +30,7 @@ public class LoadListener implements ServletContextListener {
         servletContext.setAttribute("developersIndividualProjectService",
                 DevelopersIndividualProjectService.getInstance());
         servletContext.setAttribute("javaDevelopersService", JavaDevelopersService.getInstance());
+        servletContext.setAttribute("middleDevelopersService", MiddleDevelopersService.getInstance());
+        servletContext.setAttribute("listProjectsService", ListProjectsService.getInstance());
     }
 }

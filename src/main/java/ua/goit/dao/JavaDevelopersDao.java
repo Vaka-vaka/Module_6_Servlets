@@ -7,8 +7,6 @@
 
 package ua.goit.dao;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import ua.goit.model.JavaDevelopers;
 
 import java.sql.ResultSet;
@@ -16,8 +14,6 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 public class JavaDevelopersDao extends AbstractDao<JavaDevelopers> {
-
-    private static final Logger LOGGER = LogManager.getLogger(JavaDevelopersDao.class);
 
     private static JavaDevelopersDao instance;
 

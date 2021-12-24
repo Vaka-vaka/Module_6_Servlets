@@ -15,9 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ua.goit.model.Developers;
 import ua.goit.model.Skills;
-import ua.goit.service.DevelopersService;
 import ua.goit.service.HandleBodyUtil;
 import ua.goit.service.SkillsService;
 
